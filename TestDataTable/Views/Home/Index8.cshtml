@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Detay Row Template - Child Rows";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index 8 (Detay Row Template - Child Rows)</h2>
+
+<script>
+    /* Formatting function for row details - modify as you need */
+    function format(d) {
+        // `d` is the original data object for the row
+        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+            '<tr>' +
+            '<td>Full name:</td>' +
+            '<td>' + d.name + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>Extension number:</td>' +
+            '<td>' + d.extn + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>Extra info:</td>' +
+            '<td>And any further details here (images etc)...</td>' +
+            '</tr>' +
+            '</table>';
+    }
+
+    $(document).ready(function () {
+        var table = $('#example').DataTable({
+            "ajax": "/Files/test8.txt",
+            "columns": [
+                {
+                    "className": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": ''
+                },
+                { "data": "name" },
+                { "data": "position" },
+                { "data": "office" },
+                { "data": "salary" }
+            ],
+            "order": [[1, 'asc']]
+        });
+
+        // Add event listener for opening and closing details
+        $('#example tbody').on('click', 'td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row(tr);
+
+            if (row.child.isShown()) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child(format(row.data())).show();
+                tr.addClass('shown');
+            }
+        });
+    });
+
+
+
+</script>
+
+<style>
+    td.details-control {
+        background: url('../../Content/images/details_open.png') no-repeat center center;
+        cursor: pointer;
+    }
+
+    tr.shown td.details-control {
+        background: url('../../Content/images/details_close.png') no-repeat center center;
+    }
+</style>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
+
+            <table id="example" class="display table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                 
+            </table>
+
+
+
+        </div>
+    </div>
+</div>

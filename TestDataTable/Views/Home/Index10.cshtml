@@ -1,0 +1,586 @@
+﻿
+@{
+    ViewBag.Title = "Multiple CheckBoxes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Index 10 (Multiple CheckBoxes)</h2>
+
+<script>
+    $(document).ready(function () {
+
+
+        //$('#example').DataTable({
+        //columnDefs: [{
+        //    orderable: false,
+        //    className: 'select-checkbox',
+        //    targets: 0
+        //}],
+        //select: {
+        //    style: 'os',
+        //    selector: 'td:first-child'
+        //},
+        //order: [[1, 'asc']]
+        //});
+
+
+        var table = $('#example').DataTable();
+
+
+        $('#button').click(function () {
+            //var data = table.rows('.selected').data();
+            //var st = 'Name : ' + data[0][1] + ' - Position :  ' + data[0][2] + ' - Office : ' + data[0][3]
+            var pg = document.getElementById('pTipKoduSG');
+            pg.innerText = '';
+
+
+            $('input.cbk:checkbox:checked').each(function () {
+                //.................................
+                pg.append(this.id + ";");
+
+            });
+
+        });
+
+
+        //table.on('selectItems', function (e, dt, items) {
+        //    console.log('Items to be selected are now: ', items);
+        //});
+
+
+
+        //.......................................
+        $("#chkAll").click(function () {
+            TumunuSec();
+        });
+
+			//.......................................
+
+    });
+
+
+        function TumunuSec() {
+        var xchkAll = document.getElementById('chkAll');
+        var durum = xchkAll.checked;
+
+            $('#example tr:has(td)').find('input[type="checkbox"]').prop('checked', durum);
+
+        if (durum == true) {
+            $('input.cbk:checkbox:checked').each(function () {
+                var sThis = $(this);
+                var cid = sThis.attr('id');
+
+                console.log('cid : ' + cid);
+            });
+        }
+        else {
+            
+        }
+    }
+
+
+
+
+
+</script>
+
+
+<div class="container-fluid">
+    <div style="display: block;background-color:yellow;">
+        <p id="pTipKoduSG" runat="server" title="Seçilen"></p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <button id="button">Seçilenler (Sayfa Bazlı)</button>
+            <br />
+            <h6>Tümünü Seç - Bırak</h6>
+            <input type="checkbox" id="chkAll" name="chkAll" title="Seç-Bırak" />
+            <hr />
+            <table id="example" class="table" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Seç</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c0'></td>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>$320,800</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c1'></td>
+                        <td>Garrett Winters</td>
+                        <td>Accountant</td>
+                        <td>Tokyo</td>
+                        <td>63</td>
+                        <td>$170,750</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c2'></td>
+                        <td>Ashton Cox</td>
+                        <td>Junior Technical Author</td>
+                        <td>San Francisco</td>
+                        <td>66</td>
+                        <td>$86,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c3'></td>
+                        <td>Cedric Kelly</td>
+                        <td>Senior Javascript Developer</td>
+                        <td>Edinburgh</td>
+                        <td>22</td>
+                        <td>$433,060</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c4'></td>
+                        <td>Airi Satou</td>
+                        <td>Accountant</td>
+                        <td>Tokyo</td>
+                        <td>33</td>
+                        <td>$162,700</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c5'></td>
+                        <td>Brielle Williamson</td>
+                        <td>Integration Specialist</td>
+                        <td>New York</td>
+                        <td>61</td>
+                        <td>$372,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c6'></td>
+                        <td>Herrod Chandler</td>
+                        <td>Sales Assistant</td>
+                        <td>San Francisco</td>
+                        <td>59</td>
+                        <td>$137,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c7'></td>
+                        <td>Rhona Davidson</td>
+                        <td>Integration Specialist</td>
+                        <td>Tokyo</td>
+                        <td>55</td>
+                        <td>$327,900</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c8'></td>
+                        <td>Colleen Hurst</td>
+                        <td>Javascript Developer</td>
+                        <td>San Francisco</td>
+                        <td>39</td>
+                        <td>$205,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c9'></td>
+                        <td>Sonya Frost</td>
+                        <td>Software Engineer</td>
+                        <td>Edinburgh</td>
+                        <td>23</td>
+                        <td>$103,600</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c10'></td>
+                        <td>Jena Gaines</td>
+                        <td>Office Manager</td>
+                        <td>London</td>
+                        <td>30</td>
+                        <td>$90,560</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c11'></td>
+                        <td>Quinn Flynn</td>
+                        <td>Support Lead</td>
+                        <td>Edinburgh</td>
+                        <td>22</td>
+                        <td>$342,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c12'></td>
+                        <td>Charde Marshall</td>
+                        <td>Regional Director</td>
+                        <td>San Francisco</td>
+                        <td>36</td>
+                        <td>$470,600</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c13'></td>
+                        <td>Haley Kennedy</td>
+                        <td>Senior Marketing Designer</td>
+                        <td>London</td>
+                        <td>43</td>
+                        <td>$313,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c14'></td>
+                        <td>Tatyana Fitzpatrick</td>
+                        <td>Regional Director</td>
+                        <td>London</td>
+                        <td>19</td>
+                        <td>$385,750</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c15'></td>
+                        <td>Michael Silva</td>
+                        <td>Marketing Designer</td>
+                        <td>London</td>
+                        <td>66</td>
+                        <td>$198,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c16'></td>
+                        <td>Paul Byrd</td>
+                        <td>Chief Financial Officer (CFO)</td>
+                        <td>New York</td>
+                        <td>64</td>
+                        <td>$725,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c17'></td>
+                        <td>Gloria Little</td>
+                        <td>Systems Administrator</td>
+                        <td>New York</td>
+                        <td>59</td>
+                        <td>$237,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c18'></td>
+                        <td>Bradley Greer</td>
+                        <td>Software Engineer</td>
+                        <td>London</td>
+                        <td>41</td>
+                        <td>$132,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c19'></td>
+                        <td>Dai Rios</td>
+                        <td>Personnel Lead</td>
+                        <td>Edinburgh</td>
+                        <td>35</td>
+                        <td>$217,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c20'></td>
+                        <td>Jenette Caldwell</td>
+                        <td>Development Lead</td>
+                        <td>New York</td>
+                        <td>30</td>
+                        <td>$345,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c21'></td>
+                        <td>Yuri Berry</td>
+                        <td>Chief Marketing Officer (CMO)</td>
+                        <td>New York</td>
+                        <td>40</td>
+                        <td>$675,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c22'></td>
+                        <td>Caesar Vance</td>
+                        <td>Pre-Sales Support</td>
+                        <td>New York</td>
+                        <td>21</td>
+                        <td>$106,450</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c23'></td>
+                        <td>Doris Wilder</td>
+                        <td>Sales Assistant</td>
+                        <td>Sidney</td>
+                        <td>23</td>
+                        <td>$85,600</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c24'></td>
+                        <td>Angelica Ramos</td>
+                        <td>Chief Executive Officer (CEO)</td>
+                        <td>London</td>
+                        <td>47</td>
+                        <td>$1,200,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c25'></td>
+                        <td>Gavin Joyce</td>
+                        <td>Developer</td>
+                        <td>Edinburgh</td>
+                        <td>42</td>
+                        <td>$92,575</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c26'></td>
+                        <td>Jennifer Chang</td>
+                        <td>Regional Director</td>
+                        <td>Singapore</td>
+                        <td>28</td>
+                        <td>$357,650</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c27'></td>
+                        <td>Brenden Wagner</td>
+                        <td>Software Engineer</td>
+                        <td>San Francisco</td>
+                        <td>28</td>
+                        <td>$206,850</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c28'></td>
+                        <td>Fiona Green</td>
+                        <td>Chief Operating Officer (COO)</td>
+                        <td>San Francisco</td>
+                        <td>48</td>
+                        <td>$850,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c29'></td>
+                        <td>Shou Itou</td>
+                        <td>Regional Marketing</td>
+                        <td>Tokyo</td>
+                        <td>20</td>
+                        <td>$163,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c30'></td>
+                        <td>Michelle House</td>
+                        <td>Integration Specialist</td>
+                        <td>Sidney</td>
+                        <td>37</td>
+                        <td>$95,400</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c31'></td>
+                        <td>Suki Burks</td>
+                        <td>Developer</td>
+                        <td>London</td>
+                        <td>53</td>
+                        <td>$114,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c32'></td>
+                        <td>Prescott Bartlett</td>
+                        <td>Technical Author</td>
+                        <td>London</td>
+                        <td>27</td>
+                        <td>$145,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c33'></td>
+                        <td>Gavin Cortez</td>
+                        <td>Team Leader</td>
+                        <td>San Francisco</td>
+                        <td>22</td>
+                        <td>$235,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c34'></td>
+                        <td>Martena Mccray</td>
+                        <td>Post-Sales support</td>
+                        <td>Edinburgh</td>
+                        <td>46</td>
+                        <td>$324,050</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c35'></td>
+                        <td>Unity Butler</td>
+                        <td>Marketing Designer</td>
+                        <td>San Francisco</td>
+                        <td>47</td>
+                        <td>$85,675</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c36'></td>
+                        <td>Howard Hatfield</td>
+                        <td>Office Manager</td>
+                        <td>San Francisco</td>
+                        <td>51</td>
+                        <td>$164,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c37'></td>
+                        <td>Hope Fuentes</td>
+                        <td>Secretary</td>
+                        <td>San Francisco</td>
+                        <td>41</td>
+                        <td>$109,850</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c38'></td>
+                        <td>Vivian Harrell</td>
+                        <td>Financial Controller</td>
+                        <td>San Francisco</td>
+                        <td>62</td>
+                        <td>$452,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c39'></td>
+                        <td>Timothy Mooney</td>
+                        <td>Office Manager</td>
+                        <td>London</td>
+                        <td>37</td>
+                        <td>$136,200</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c40'></td>
+                        <td>Jackson Bradshaw</td>
+                        <td>Director</td>
+                        <td>New York</td>
+                        <td>65</td>
+                        <td>$645,750</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c41'></td>
+                        <td>Olivia Liang</td>
+                        <td>Support Engineer</td>
+                        <td>Singapore</td>
+                        <td>64</td>
+                        <td>$234,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c42'></td>
+                        <td>Bruno Nash</td>
+                        <td>Software Engineer</td>
+                        <td>London</td>
+                        <td>38</td>
+                        <td>$163,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c43'></td>
+                        <td>Sakura Yamamoto</td>
+                        <td>Support Engineer</td>
+                        <td>Tokyo</td>
+                        <td>37</td>
+                        <td>$139,575</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c44'></td>
+                        <td>Thor Walton</td>
+                        <td>Developer</td>
+                        <td>New York</td>
+                        <td>61</td>
+                        <td>$98,540</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c45'></td>
+                        <td>Finn Camacho</td>
+                        <td>Support Engineer</td>
+                        <td>San Francisco</td>
+                        <td>47</td>
+                        <td>$87,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c46'></td>
+                        <td>Serge Baldwin</td>
+                        <td>Data Coordinator</td>
+                        <td>Singapore</td>
+                        <td>64</td>
+                        <td>$138,575</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c47'></td>
+                        <td>Zenaida Frank</td>
+                        <td>Software Engineer</td>
+                        <td>New York</td>
+                        <td>63</td>
+                        <td>$125,250</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c48'></td>
+                        <td>Zorita Serrano</td>
+                        <td>Software Engineer</td>
+                        <td>San Francisco</td>
+                        <td>56</td>
+                        <td>$115,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c49'></td>
+                        <td>Jennifer Acosta</td>
+                        <td>Junior Javascript Developer</td>
+                        <td>Edinburgh</td>
+                        <td>43</td>
+                        <td>$75,650</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c50'></td>
+                        <td>Cara Stevens</td>
+                        <td>Sales Assistant</td>
+                        <td>New York</td>
+                        <td>46</td>
+                        <td>$145,600</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c51'></td>
+                        <td>Hermione Butler</td>
+                        <td>Regional Director</td>
+                        <td>London</td>
+                        <td>47</td>
+                        <td>$356,250</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c52'></td>
+                        <td>Lael Greer</td>
+                        <td>Systems Administrator</td>
+                        <td>London</td>
+                        <td>21</td>
+                        <td>$103,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c53'></td>
+                        <td>Jonas Alexander</td>
+                        <td>Developer</td>
+                        <td>San Francisco</td>
+                        <td>30</td>
+                        <td>$86,500</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c54'></td>
+                        <td>Shad Decker</td>
+                        <td>Regional Director</td>
+                        <td>Edinburgh</td>
+                        <td>51</td>
+                        <td>$183,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c55'></td>
+                        <td>Michael Bruce</td>
+                        <td>Javascript Developer</td>
+                        <td>Singapore</td>
+                        <td>29</td>
+                        <td>$183,000</td>
+                    </tr>
+                    <tr>
+                        <td><input class='cbk form-check' type='checkbox' id='c56'></td>
+                        <td>Donna Snider</td>
+                        <td>Customer Support</td>
+                        <td>New York</td>
+                        <td>27</td>
+                        <td>$112,000</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Salary</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+
+        </div>
+    </div>
+</div>
